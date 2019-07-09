@@ -35,14 +35,24 @@ class App extends React.Component {
     this.setState({username: ""})
   }
 
+  handleSubmitPoem = (poemObj) => {
+    console.log(poemObj);
+    this.setState({poemsList: [...this.state.poemsList, poemObj]})
+    console.log("submittedddd");
+    console.log(this.state.poemsList);
+  }
+
   render(){
-    // console.log(this.state.poemsList);
+    console.log(this.state.username);
     return (
       <div className="app">
         <div className="sidebar">
           <LoginForm newUsername={this.handleNewUsername} />
-          <UserHeader username={this.state.username} onLogout={this.handleLogOut}/>
-          <NewPoemForm />
+          <UserHeader username={this.state.username}
+             onLogout={this.handleLogOut}/>
+
+          <NewPoemForm username={this.state.username}
+            poemsList={this.state.poemsList} onPoemSubmit={this.handleSubmitPoem} />
         </div>
         <PoemsContainer poemsList={this.state.poemsList}
           />

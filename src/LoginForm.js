@@ -8,19 +8,15 @@ class LoginForm extends React.Component {
 
   handleChange = (event) => {
     this.setState({username: event.target.value })
-    // console.log(this.state.username);
   }
 
   handleSubmit = (event) => {
     event.preventDefault()
     this.props.newUsername(this.state)
-
-
-    // this.setState({username: this.props})
   }
 
   render(){
-    // console.log(this.props);
+    console.log(this.state.username);
     return (
       <div className="login">
         <form onSubmit={this.handleSubmit} className="login-form">
